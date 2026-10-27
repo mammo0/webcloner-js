@@ -6,9 +6,25 @@
   "bin": {
     "webcloner-js": "./dist/cli.js"
   },
+  "build": {
+    "appId": "webcloner.js",
+    "linux": {
+      "target": "AppImage"
+    },
+    "win": {
+      "target": "portable"
+    },
+    "files": [
+      "dist-electron/**/*"
+    ],
+    "extraMetadata": {
+      "main": "dist-electron/electron/main.cjs"
+    }
+  },
   "scripts": {
     "build": "tsc",
     "build:electron": "tsc -p tsconfig.electron.json && node copy-electron-assets.mjs",
+    "build:AppImage": "npm run build:electron && electron-builder build --linux --windows --publish never",
     "start": "node dist/cli.js",
     "start:electron": "npm run build:electron && electron dist-electron/electron/main.cjs --no-sandbox",
     "dev": "npm run build && node dist/cli.js",
@@ -39,6 +55,7 @@
     "@types/mime-types": "^2.1.4",
     "@types/node": "^24.9.2",
     "electron": "^39.0.0",
+    "electron-builder": "^26.18.0",
     "eslint": "^9.39.0",
     "prettier": "^3.6.2",
     "ts-node": "^10.9.2",
