@@ -64,6 +64,37 @@ All CLI features are available in the GUI:
   - Red: Error messages
   - Yellow: Warning messages
 
+## Building a Standalone App
+
+### Build for Linux and Windows
+
+You can now build a standalone Electron application that can be distributed without requiring the user to have Node.js or npm installed.
+
+#### Available Targets
+
+- **Linux AppImage**: A single-file Linux executable
+- **Windows Portable**: A self-contained Windows application (.exe)
+
+#### Build Commands
+
+```bash
+# Build for both platforms
+npm run build:AppImage
+
+# Build only for Linux (AppImage)
+npm run build:electron && electron-builder build --linux --publish never
+
+# Build only for Windows (portable)
+npm run build:electron && electron-builder build --win --publish never
+```
+
+#### Build Process
+
+1. **Build the Electron app** (`npm run build:electron`): Compiles TypeScript and copies assets
+2. **Package with electron-builder**: Creates platform-specific standalone executables
+
+The resulting files can be distributed directly to users who just need to double-click to run the application.
+
 ## Keyboard Shortcuts
 
 - **Cmd/Ctrl + R**: Reload window (development)

@@ -42,6 +42,15 @@ npm run dev -- <url> [options]
 
 ## Quick Start
 
+### Standalone Executable (No Build Required)
+
+Download pre-built standalone executables from the [Releases page](https://github.com/mammo0/webcloner-js/releases):
+
+- **Linux AppImage** - Single-file executable for Linux systems
+- **Windows Portable** - Self-contained `.exe` for Windows
+
+Simply download and run the appropriate file for your platform. No `npm install` or build step needed!
+
 ### GUI Application (Recommended)
 
 ```bash
