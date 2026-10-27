@@ -1,4 +1,4 @@
-import { app, BrowserWindow, ipcMain, dialog } from "electron";
+import { app, BrowserWindow, dialog, ipcMain, Menu } from "electron";
 import * as path from "path";
 import { WebsiteCloner } from "../src/cloner.js";
 import type { ClonerConfig, ProxyConfig, Cookie } from "../src/types.js";
@@ -15,6 +15,10 @@ declare const __dirname: string;
 
 let mainWindow: BrowserWindow | null = null;
 let currentCloner: WebsiteCloner | null = null;
+
+// hide disable menu bar on Linux and Windows
+// https://www.electronjs.org/docs/latest/api/menu#menusetapplicationmenumenu
+Menu.setApplicationMenu(null);
 
 function createWindow() {
   mainWindow = new BrowserWindow({
